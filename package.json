@@ -1,12 +1,12 @@
 {
   "name": "aichat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start:dev": "nodemon index.js",
-    "release":"standard-version"
+    "release": "standard-version"
   },
   "author": "",
   "license": "ISC",
