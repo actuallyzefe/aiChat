@@ -1,11 +1,14 @@
 const { Configuration, OpenAIApi } = require("openai");
+const readline = require("readline");
 
+// Defining AI
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
-const generateImage = async (req, res) => {
+// Image Generator Func
+exports.generateImage = async (req, res) => {
   const { prompt, size } = req.body;
   const imageSize =
     size === "small" ? "256x256" : size === "medium" ? "512x512" : "1024x1024";
@@ -36,4 +39,30 @@ const generateImage = async (req, res) => {
   }
 };
 
-module.exports = { generateImage };
+// Chat with AI
+exports.chat = async (req, res) => {
+  const { prompt } = req.body;
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }],
+  });
+  const aiRes = response.data.choices[0].message.content;
+  res.status(200).json({
+    status: "Success",
+    response: aiRes,
+  });
+};
+// const userInterface = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+
+// userInterface.prompt();
+// userInterface.on("line", async (input) => {
+//   const response = await openAi.createChatCompletion({
+//     model: "gpt-3.5-turbo",
+//     messages: [{ role: "user", content: input }],
+//   });
+//   console.log(response.data.choices[0].message.content);
+//   userInterface.prompt();
+// });
