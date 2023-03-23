@@ -1,17 +1,17 @@
 {
   "name": "aichat",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start:dev": "nodemon index.js",
+    "start:dev": "nodemon app.js",
     "release": "standard-version"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "nodemon": "^2.0.21",
     "openai": "^3.2.1",
     "standard-version": "^9.5.0"
