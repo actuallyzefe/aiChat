@@ -46,12 +46,17 @@ exports.chat = async (req, res) => {
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
   });
-  const aiRes = response.data.choices[0].message.content;
+  const aiRes = response.data.choices[0].message.content.replace(
+    /(\r\n|\n|\r)/gm,
+    ""
+  );
+
   res.status(200).json({
     status: "Success",
     response: aiRes,
   });
 };
+
 // const userInterface = readline.createInterface({
 //   input: process.stdin,
 //   output: process.stdout,
