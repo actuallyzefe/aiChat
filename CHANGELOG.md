@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/actuallyzefe/aiChat/compare/v1.1.1...v1.2.0) (2023-03-24)
+
+
+### Features
+
+* added static files ([40aaa6d](https://github.com/actuallyzefe/aiChat/commit/40aaa6d4dd2424dd2e1e84aab559a50b970adf22))
+
 ### [1.1.1](https://github.com/actuallyzefe/aiChat/compare/v1.1.0...v1.1.1) (2023-03-24)
 
 
