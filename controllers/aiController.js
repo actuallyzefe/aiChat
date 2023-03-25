@@ -1,5 +1,5 @@
-const { Configuration, OpenAIApi } = require("openai");
-const readline = require("readline");
+const { Configuration, OpenAIApi } = require('openai');
+const readline = require('readline');
 
 // Defining AI
 const configuration = new Configuration({
@@ -11,7 +11,7 @@ const openai = new OpenAIApi(configuration);
 exports.generateImage = async (req, res) => {
   const { prompt, size } = req.body;
   const imageSize =
-    size === "small" ? "256x256" : size === "medium" ? "512x512" : "1024x1024";
+    size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024';
   try {
     const response = await openai.createImage({
       prompt,
@@ -22,7 +22,7 @@ exports.generateImage = async (req, res) => {
     const imageUrl = response.data.data[0].url;
 
     res.status(200).json({
-      status: "Success",
+      status: 'Success',
       data: imageUrl,
     });
   } catch (error) {
@@ -33,8 +33,8 @@ exports.generateImage = async (req, res) => {
       console.log(error.message);
     }
     res.status(400).json({
-      status: "Fail",
-      error: "Image could not be generated",
+      status: 'Fail',
+      error: 'Image could not be generated',
     });
   }
 };
@@ -43,16 +43,17 @@ exports.generateImage = async (req, res) => {
 exports.chat = async (req, res) => {
   const { prompt } = req.body;
   const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: prompt }],
+    model: 'gpt-3.5-turbo',
+    messages: [{ role: 'user', content: prompt }],
   });
   const aiRes = response.data.choices[0].message.content.replace(
     /(\r\n|\n|\r)/gm,
-    ""
+    ''
   );
 
+  // res.render('output', { response: aiRes });
   res.status(200).json({
-    status: "Success",
+    status: 'Success',
     response: aiRes,
   });
 };
