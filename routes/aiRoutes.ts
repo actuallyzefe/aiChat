@@ -1,5 +1,5 @@
 import express from 'express';
-import { generateImage, chat } from '../controllers/aiController.js';
+import { generateImage, chat } from '../controllers/aiController';
 const router = express.Router();
 
 router.post('/generateimage', generateImage);

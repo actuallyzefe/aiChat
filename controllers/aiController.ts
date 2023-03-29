@@ -33,7 +33,7 @@ export const generateImage = async (
       status: 'Success',
       data: imageUrl,
     });
-  } catch (error) {
+  } catch (error: any) {
     if (error.response) {
       console.log(error.response.status);
       console.log(error.response.data);

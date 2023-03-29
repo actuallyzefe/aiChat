@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { aiRoutes } from './routes/aiRoutes.js';
+import { aiRoutes } from './routes/aiRoutes';
 
 const app = express();
 
