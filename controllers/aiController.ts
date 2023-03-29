@@ -69,10 +69,29 @@ export const chat = async (req: Request, res: Response) => {
       model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: prompt }],
     });
-    // let aiRes;
-    let object = response.data.choices[0].message;
-    if (object !== undefined) {
-      const aiRes = object.content.replace(/(\r\n|\n|\r)/gm, '');
+
+    // MANUAL TYPE CHECK
+    // let object = response.data.choices[0].message;
+    // if (object !== undefined) {
+    //   const aiRes = object.content.replace(/(\r\n|\n|\r)/gm, '');
+    //   res.status(200).json({
+    //     status: 'Success',
+    //     response: aiRes,
+    //   });
+    // }
+
+    // OPTIONAL CHAINING
+    const aiRes = response.data.choices[0]?.message?.content?.replace(
+      /(\r\n|\n|\r)/gm,
+      ''
+    );
+
+    if (aiRes === undefined) {
+      res.status(400).json({
+        status: 'Fail',
+        msg: 'An error happened',
+      });
+    } else {
       res.status(200).json({
         status: 'Success',
         response: aiRes,
