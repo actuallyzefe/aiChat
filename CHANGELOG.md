@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/actuallyzefe/aiChat/compare/v1.2.3...v1.3.0) (2023-03-29)
+
+
+### Features
+
+* added TRY CATCH block ([d2cae7e](https://github.com/actuallyzefe/aiChat/commit/d2cae7e099713b1c3cea05848598b6297bf8d615))
+
 ### [1.2.3](https://github.com/actuallyzefe/aiChat/compare/v1.2.2...v1.2.3) (2023-03-29)
 
 ### [1.2.2](https://github.com/actuallyzefe/aiChat/compare/v1.2.1...v1.2.2) (2023-03-29)
