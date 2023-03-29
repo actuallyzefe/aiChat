@@ -64,17 +64,30 @@ interface Res extends AxiosResponse<CreateChatCompletionResponse, any> {
 
 export const chat = async (req: Request, res: Response) => {
   const { prompt } = req.body;
-  const response: Res = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: prompt }],
-  });
-  // let aiRes;
-  let object = response.data.choices[0].message;
-  if (object !== undefined) {
-    const aiRes = object.content.replace(/(\r\n|\n|\r)/gm, '');
-    res.status(200).json({
-      status: 'Success',
-      response: aiRes,
+  try {
+    const response: Res = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: 'user', content: prompt }],
+    });
+    // let aiRes;
+    let object = response.data.choices[0].message;
+    if (object !== undefined) {
+      const aiRes = object.content.replace(/(\r\n|\n|\r)/gm, '');
+      res.status(200).json({
+        status: 'Success',
+        response: aiRes,
+      });
+    }
+  } catch (error: any) {
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+    } else {
+      console.log(error.message);
+    }
+    res.status(400).json({
+      status: 'Fail',
+      error: 'An error happened',
     });
   }
 };
