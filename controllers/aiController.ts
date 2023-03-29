@@ -53,15 +53,6 @@ export const generateImage = async (
   }
 };
 
-interface MyObject {
-  id: string;
-  object: string;
-  created: number;
-  model: string;
-  choices: Array<CreateChatCompletionResponseChoicesInner>;
-  usage?: CreateCompletionResponseUsage;
-}
-
 interface Res extends AxiosResponse<CreateChatCompletionResponse, any> {
   data: CreateChatCompletionResponse;
   status: number;
